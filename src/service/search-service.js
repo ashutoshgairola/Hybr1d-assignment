@@ -47,6 +47,22 @@ const searchService = {
     }
   },
 
+  searchWithPagination: async (query, page) => {
+    try {
+      const response = await axios.get(`${URL}/search`, {
+        params: { query, page },
+      });
+      return response.data.hits;
+    } catch (error) {
+      console.error("Error searching Hacker News with pagination:", error);
+
+      const errorMessage =
+        error.response?.data?.message ||
+        "Failed to fetch search results. Please try again later.";
+      throw new Error(errorMessage);
+    }
+  },
+
   searchByDate: async (query) => {
     try {
       const response = await axios.get(`${URL}/search_by_date`, {

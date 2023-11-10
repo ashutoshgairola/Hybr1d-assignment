@@ -18,7 +18,7 @@ function Card({ title, author, created_at, points, num_comments, onClick }) {
       <div className="flex-col justify-between space-y-1">
         <div className="text-sm text-black font-semibold">{title}</div>
         <div className="flex justify-between items-center">
-          <div className="px-3 text-xs py-0.5 bg-[#FF742B] font-semibold bg-opacity-40 text-white rounded-lg">
+          <div className="px-3 text-xs py-0.5 bg-[#FF742B] font-semibold  text-white rounded-lg">
             Story
           </div>
           <div className=" text-xs  text-right">~{author}</div>

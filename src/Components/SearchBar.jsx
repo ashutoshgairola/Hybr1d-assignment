@@ -22,15 +22,27 @@ const SearchBar = ({ onSearch }) => {
           onChange={handleInputChange}
         />
         <div
-          className=" text-xl flex justify-center items-center p-4 "
+          className=" text-xl flex justify-center items-center p-4 rounded-lg border-r-2"
           onClick={handleSearch}
         >
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
-      </div>
-      <div className="flex  ">
-        <div className="bg-white py-2 px-4 rounded-lg ">
-          Filter <i className="fa-solid fa-filter"></i>
+        <div className="bg-[#4699FF]  rounded-r-lg flex items-center text-white font-semibold focus:border-[#FF742B]">
+          <select
+            className=" py-3 mx-4 bg-[#4699FF] focus:border-0"
+            name="filter "
+            id="filter"
+          >
+            <option value="" selected disabled hidden>
+              Filter
+            </option>
+            <option value="story">story</option>
+            <option value="comment">comment</option>
+            <option value="poll">poll</option>
+            <option value="pollopt">pollopt</option>
+            <option value="show_hn">show_hn</option>s
+            <option value="ask_hn">ask_hn</option>s
+          </select>
         </div>
       </div>
     </div>

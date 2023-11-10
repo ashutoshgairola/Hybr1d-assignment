@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TimeAgo from "javascript-time-ago";
 import ReplyCard from "./ReplyCard";
 

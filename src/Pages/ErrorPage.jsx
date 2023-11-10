@@ -1,23 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import lottie from "lottie-web";
 import animationData from "../assets/notfound.json";
 
 export default function ErrorPage({ error }) {
-  const effectRan = useRef(false);
-
   useEffect(() => {
-    if (!effectRan.current) {
-      const animationContainer = document.getElementById("lottie-animation");
-      lottie.loadAnimation({
-        container: animationContainer,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-      });
-    }
-
-    return () => (effectRan.current = true);
+    const animationContainer = document.getElementById("lottie-animation");
+    lottie.loadAnimation({
+      container: animationContainer,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+    });
   }, []);
 
   let errorMessage = "The page you are looking for does not exist.";
