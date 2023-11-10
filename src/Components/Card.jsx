@@ -3,7 +3,7 @@ import en from "javascript-time-ago/locale/en";
 
 TimeAgo.addDefaultLocale(en);
 
-function Card({ title, author, time, point, comments, onClick }) {
+function Card({ title, author, created_at, points, num_comments, onClick }) {
   const timeAgo = new TimeAgo("en-US");
 
   const handleClick = () => {
@@ -25,13 +25,15 @@ function Card({ title, author, time, point, comments, onClick }) {
         </div>
       </div>
       <div className="flex justify-between  text-xs text-center">
-        <div className=" text-[#4699FF]">{timeAgo.format(new Date(time))}</div>
+        <div className=" text-[#4699FF]">
+          {timeAgo.format(new Date(created_at))}
+        </div>
         <div className="px-4 border-x-2 hover:text-[#4699FF]">
-          <i className="fa-solid fa-coins "></i> {point}
+          <i className="fa-solid fa-coins "></i> {points}
         </div>
         <div className="hover:text-[#4699FF]">
           <i className="fa-solid fa-comments pr-1"></i>
-          {comments}
+          {num_comments}
         </div>
       </div>
     </div>

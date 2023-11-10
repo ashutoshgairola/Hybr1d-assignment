@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import searchService from "../service/search-service";
 import PostCard from "../Components/PostCard";
+import CommentsCard from "../Components/CommentsCard";
+import ErrorPage from "./ErrorPage";
 
 const Post = () => {
   const { id } = useParams();
@@ -19,7 +21,7 @@ const Post = () => {
         setPost(postData);
         setLoading(false);
       } catch (error) {
-        setError(error.message);
+        setError(error);
         setLoading(false);
       }
     };
@@ -32,16 +34,21 @@ const Post = () => {
     <div className="flex flex-col space-y-4">
       <Header />
       {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <ErrorPage error={error} />}
       {post && (
-        <PostCard
-          title={post.title}
-          author={post.author}
-          time={post.created_at}
-          point={post.points}
-          comments={post.children.length}
-          url={post.url}
-        />
+        <div className="flex flex-col space-y-4 mb-4">
+          <PostCard
+            {...post}
+          />
+          <div className=" flex flex-col space-y-2 mx-4 p-4 bg-neutral-800 rounded-lg bg-opacity-20">
+            <div className="text-white font-bold text-2xl">Comments :</div>
+            {post.children.map((comment) => (
+              <CommentsCard key={comment.id}
+                {...comment}
+              />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

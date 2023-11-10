@@ -7,11 +7,7 @@ function Result({ results }) {
       {results.map((result) => (
         <Link to={`/post/${result.objectID}`} key={result.story_id}>
           <Card
-            title={result.title}
-            author={result.author}
-            time={result.created_at}
-            point={result.points}
-            comments={result.num_comments}
+            {...result}
           />
         </Link>
       ))}

@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import SearchBar from "./Components/SearchBar";
 import Result from "./Components/Result";
 import searchService from "./service/search-service";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -30,7 +31,7 @@ function App() {
       <Header />
       <SearchBar onSearch={handleSearch} />
       {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <ErrorPage error={error} />}
       {searchResults.length > 0 ? (
         <Result results={searchResults} />
       ) : (
