@@ -37,10 +37,12 @@ const Post = () => {
       {loading && <Skeleton />}
       {error && <ErrorPage error={error} />}
       {post && (
-        <div className="flex flex-col space-y-4 mb-4">
+        <div className="flex flex-col space-y-4 ">
           <PostCard {...post} />
           <div className=" flex flex-col space-y-4 mx-4 p-4 bg-neutral-800 rounded-lg bg-opacity-20">
-            <div className="text-white font-bold text-2xl">Comments :</div>
+            <div className="text-white font-bold lg:text-2xl md:text-xl">
+              Comments :
+            </div>
             {post.children.map((comment) => (
               <CommentsCard key={comment.id} {...comment} />
             ))}

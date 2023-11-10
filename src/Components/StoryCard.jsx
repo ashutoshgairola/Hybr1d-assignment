@@ -3,18 +3,11 @@ import en from "javascript-time-ago/locale/en";
 
 TimeAgo.addDefaultLocale(en);
 
-function Card({ title, author, created_at, points, num_comments, onClick }) {
+function Card({ title, author, created_at, points, num_comments }) {
   const timeAgo = new TimeAgo("en-US");
 
-  const handleClick = () => {
-    onClick();
-  };
-
   return (
-    <div
-      onClick={handleClick}
-      className="p-5 text-neutral-400 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md rounded-lg hover:shadow-sm hover:shadow-[#FF742B]"
-    >
+    <div className="p-5 text-neutral-400 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md rounded-lg hover:shadow-sm hover:shadow-[#FF742B]">
       <div className="flex-col justify-between space-y-1">
         <div className="text-sm text-black font-semibold">{title}</div>
         <div className="flex justify-between items-center">

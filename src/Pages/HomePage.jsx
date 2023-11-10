@@ -8,17 +8,21 @@ import Skeleton from "../Components/Loading";
 
 function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
   const [page, setPage] = useState(0);
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setError(null);
         setLoading(true);
-        const results = await searchService.searchWithPagination(query, page);
+        const results =
+          query.trim() === ""
+            ? await searchService.getFrontPage() 
+            : await searchService.searchWithPagination(query, page);
+        // console.log(query,"222222222");
         setSearchResults(results);
       } catch (error) {
         console.error("Error searching Hacker News:", error.message);
@@ -31,16 +35,17 @@ function HomePage() {
     fetchData();
   }, [page, query]);
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (searchQuery) => {
     setPage(0);
-    setQuery(query);
+    setQuery(searchQuery);
+
   };
 
   return (
     <div className="flex flex-col space-y-4 ">
       <Header />
       <SearchBar onSearch={handleSearch} />
-      {loading && <Skeleton />}
+      {loading && <Skeleton />} 
       {error && <ErrorPage error={error} />}
       {searchResults.length > 0 && !loading ? (
         <Result results={searchResults} page={page} setPage={setPage} />

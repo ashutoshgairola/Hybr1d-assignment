@@ -49,9 +49,9 @@ const searchService = {
 
   searchWithPagination: async (query, page) => {
     try {
-      const response = await axios.get(`${URL}/search`, {
-        params: { query, page },
-      });
+      const response = await axios.get(
+        `${URL}/search${query}&page=${page}`
+      );
       return response.data.hits;
     } catch (error) {
       console.error("Error searching Hacker News with pagination:", error);
@@ -62,7 +62,24 @@ const searchService = {
       throw new Error(errorMessage);
     }
   },
+  getFrontPage: async () => {
+    try {
+      const response = await axios.get(`${URL}/search`, {
+        params: { tags: "front_page" },
+      });
+      return response.data.hits;
+    } catch (error) {
+      console.error(
+        "Failed to fetch front page items. Please try again later.",
+        error
+      );
 
+      const errorMessage =
+        error.response?.data?.message ||
+        "Failed to fetch front page items. Please try again later.";
+      throw new Error(errorMessage);
+    }
+  },
   searchByDate: async (query) => {
     try {
       const response = await axios.get(`${URL}/search_by_date`, {

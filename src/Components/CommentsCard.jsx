@@ -13,20 +13,25 @@ function Card({ text, author, created_at, children }) {
     ? text
     : `${text.slice(0, maxCharacters)}...`;
 
-  const handleToggleExpand = () => {
+  const handleToggleExpand = (e) => {
+    e.stopPropagation();
     setIsExpandedText(!isExpandedText);
   };
 
-  const handleToggleReplies = () => {
+  const handleToggleReplies = (e) => {
+    e.stopPropagation();
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div className="p-4 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md shadow-neutral-300 rounded-lg hover:shadow-sm hover:shadow-[#4699FF] hover:border-l-4 border-[#FF742B]">
+    <div
+      onClick={handleToggleReplies}
+      className="py-4 px-6 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md shadow-neutral-300 rounded-lg hover:shadow-sm hover:shadow-[#4699FF] hover:border-l-4 border-[#FF742B]"
+    >
       <div className="flex justify-between font-semibold items-center">
-        <div className="text-xl">
+        <div className="md:text-xl sm:text-lg">
           @{author}{" "}
-          <span className="opacity-30 text-sm">
+          <span className="text-neutral-300 text-sm">
             ({timeAgo.format(new Date(created_at))})
           </span>
         </div>
@@ -38,7 +43,7 @@ function Card({ text, author, created_at, children }) {
           {replies}
         </div>
       </div>
-      <div className="px-2 text-neutral-500 text-sm break-words overflow-hidden">
+      <div className="px-2 text-neutral-500 lg:text-sm sm:text-xs break-words overflow-hidden">
         <div dangerouslySetInnerHTML={{ __html: truncatedText }} />
         {text.length > maxCharacters && (
           <span

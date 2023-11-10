@@ -7,15 +7,19 @@ function ReplyCard({ text, author, created_at, children }) {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleToggleExpand = () => {
+  const handleToggleExpand = (e) => {
+    e.stopPropagation();
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div className="p-4 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md shadow-neutral-300 rounded-lg hover:shadow-sm hover:shadow-[#FF742B] hover:border-l-4 border-[#4699FF]">
+    <div
+      onClick={handleToggleExpand}
+      className="py-4 px-6 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md shadow-neutral-300 rounded-lg hover:shadow-sm hover:shadow-[#FF742B] hover:border-l-4 border-[#4699FF]"
+    >
       <div className="flex justify-between font-semibold items-center">
-        <div className="text-lg">
-          @{author}{" "}
+        <div className="lg:text-lg sm:text-base">
+          @{author}
           <span className="opacity-30 text-sm">
             ({timeAgo.format(new Date(created_at))})
           </span>
@@ -30,7 +34,7 @@ function ReplyCard({ text, author, created_at, children }) {
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: text }}
-        className="px-2 text-neutral-500 text-sm break-words overflow-hidden"
+        className="px-2 text-neutral-500 lg:text-sm sm:text-xs break-words overflow-hidden"
       />
       {isExpanded && replies > 0 && (
         <div className=" space-y-3">
@@ -42,7 +46,5 @@ function ReplyCard({ text, author, created_at, children }) {
     </div>
   );
 }
-
-
 
 export default ReplyCard;

@@ -11,11 +11,11 @@ function PostCard({ title, author, created_at, points, children, url }) {
   return (
     <div className="mx-4 p-5 text-neutral-400 flex flex-col space-y-3 justify-between bg-white bg-opacity-80 shadow-md rounded-lg hover:shadow-sm hover:shadow-[#FF742B]">
       <div className="flex flex-col justify-between space-y-0.5">
-        <div className="flex justify-between text-2xl">
+        <div className="flex justify-between lg:text-2xl sm:text-xl">
           <div>
             <div className=" text-black font-semibold">
-              {title + " "}{" "}
-              <a href={url} className="opacity-30 textlg">
+              {title + " "}
+              <a href={url} className="text-neutral-300 textlg">
                 ({domain})
               </a>
             </div>
@@ -26,9 +26,9 @@ function PostCard({ title, author, created_at, points, children, url }) {
             </a>
           </div>
         </div>
-        <div className="">~{author}</div>
+        <div className="lg:text-lg sm:text-base">~{author}</div>
       </div>
-      <div className="flex justify-between text-lg text-center">
+      <div className="flex justify-between lg:text-lg sm:text-base text-center">
         <div className="flex space-x-5 ">
           <div className=" hover:text-[#4699FF]">
             <i className="fa-solid fa-coins "></i> {points}

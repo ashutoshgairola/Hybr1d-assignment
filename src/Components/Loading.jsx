@@ -18,7 +18,7 @@ export default function Loading() {
     <div className="flex justify-center items-center w-full h-full">
       <div
         id="lottie-loading"
-        style={{ width: "10rem", height: "10rem" }}
+        style={{ width: "50rem" }}
       ></div>
     </div>
   );
