@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+
 
 import Header from "./Components/Header";
 import SearchBar from "./Components/SearchBar";
