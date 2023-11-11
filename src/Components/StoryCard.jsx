@@ -3,7 +3,7 @@ import en from "javascript-time-ago/locale/en";
 
 TimeAgo.addDefaultLocale(en);
 
-function Card({ title, author, created_at, points, num_comments }) {
+function StoryCard({ title, author, created_at, points, num_comments }) {
   const timeAgo = new TimeAgo("en-US");
 
   return (
@@ -33,4 +33,4 @@ function Card({ title, author, created_at, points, num_comments }) {
   );
 }
 
-export default Card;
+export default StoryCard;

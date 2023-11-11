@@ -13,6 +13,7 @@ const Post = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expandedCommentIndex, setExpandedCommentIndex] = useState(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -30,6 +31,9 @@ const Post = () => {
     fetchPost();
   }, [id]);
 
+  const handleExpandComment = (index) => {
+    setExpandedCommentIndex(index === expandedCommentIndex ? null : index);
+  };
 
   return (
     <div className="flex flex-col space-y-4">
@@ -43,8 +47,14 @@ const Post = () => {
             <div className="text-white font-bold lg:text-2xl md:text-xl">
               Comments :
             </div>
-            {post.children.map((comment) => (
-              <CommentsCard key={comment.id} {...comment} />
+            {post.children.map((comment, index) => (
+              <CommentsCard
+                key={comment.id}
+                {...comment}
+                index={index}
+                onExpand={handleExpandComment}
+                isExpanded={index === expandedCommentIndex}
+              />
             ))}
           </div>
         </div>

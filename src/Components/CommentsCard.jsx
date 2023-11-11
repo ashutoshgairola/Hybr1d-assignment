@@ -2,16 +2,15 @@ import { useState } from "react";
 import TimeAgo from "javascript-time-ago";
 import ReplyCard from "./ReplyCard";
 
-function Card({ text, author, created_at, children }) {
+function CommentsCard({ text, author, created_at, children }) {
   const replies = children.length;
   const timeAgo = new TimeAgo("en-US");
   const maxCharacters = 800;
 
   const [isExpandedText, setIsExpandedText] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const truncatedText = isExpandedText
-    ? text
-    : `${text.slice(0, maxCharacters)}...`;
+
+  const truncatedText = isExpandedText ? text : `${text.slice(0, maxCharacters)}...`;
 
   const handleToggleExpand = (e) => {
     e.stopPropagation();
@@ -37,7 +36,6 @@ function Card({ text, author, created_at, children }) {
         </div>
         <div
           className="flex space-x-4 text-sm text-neutral-600 hover:text-[#4699FF] cursor-pointer"
-          onClick={handleToggleReplies}
         >
           <i className="fa-solid fa-comments pr-1"></i>
           {replies}
@@ -66,4 +64,4 @@ function Card({ text, author, created_at, children }) {
   );
 }
 
-export default Card;
+export default CommentsCard;
