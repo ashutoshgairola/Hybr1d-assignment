@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+
 import Card from "./StoryCard";
 import PollCard from "./PollCard";
 import Skeleton from "./Loading";
 import CommentCard from "./CommentCard";
 
-function Result({ results, page, setPage, loading }) {
+function Result({ results, page, setPage,loading }) {
+
+  
   const [loadingPage, setLoadingPage] = useState(false);
 
   useEffect(() => {
@@ -13,6 +18,7 @@ function Result({ results, page, setPage, loading }) {
   }, [results]);
 
   const handlePreviousPage = () => {
+    // console.log(results, page, setPage, loading,"###");
     if (page > 0) {
       setPage((prevPage) => prevPage - 1);
       setLoadingPage(true);
@@ -20,6 +26,8 @@ function Result({ results, page, setPage, loading }) {
   };
 
   const handleNextPage = () => {
+    // console.log(page,"###");
+
     setPage((prevPage) => prevPage + 1);
     setLoadingPage(true);
   };
@@ -49,7 +57,7 @@ function Result({ results, page, setPage, loading }) {
         <button
           onClick={handlePreviousPage}
           disabled={page === 0}
-          className="disabled:bg-neutral-500 px-4 py-2 mr-2 text-white bg-[#4699FF] rounded cursor-pointer"
+          className=" disabled:bg-neutral-500 disabled:opacity-20 px-4 py-2 mr-2 text-white bg-[#4699FF] rounded cursor-pointer"
         >
           Previous
         </button>
@@ -64,5 +72,12 @@ function Result({ results, page, setPage, loading }) {
     </div>
   );
 }
+
+Result.propTypes = {
+  results: PropTypes.array,
+  page: PropTypes.number,
+  setPage: PropTypes.func,
+  loading: PropTypes.bool,
+};
 
 export default Result;

@@ -9,6 +9,7 @@ function ReplyCard({ text, author, created_at, children }) {
 
   const handleToggleExpand = (e) => {
     e.stopPropagation();
+    // console.log(isExpanded);
     setIsExpanded(!isExpanded);
   };
 

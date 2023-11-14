@@ -1,5 +1,5 @@
 import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
+// import en from "javascript-time-ago/locale/en";
 
 function PostCard({ title, author, created_at, points, children, url }) {
   const comments = children.length;
