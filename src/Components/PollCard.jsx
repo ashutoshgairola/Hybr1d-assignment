@@ -1,6 +1,7 @@
 import TimeAgo from "javascript-time-ago";
+import PropTypes from "prop-types";
 
-function Card({ author, created_at, points }) {
+function PollCard({ author, created_at, points }) {
   const timeAgo = new TimeAgo("en-US");
 
   return (
@@ -24,4 +25,11 @@ function Card({ author, created_at, points }) {
   );
 }
 
-export default Card;
+PollCard.propTypes = {
+  points: PropTypes.number,
+  author: PropTypes.string,
+  created_at: PropTypes.string,
+};
+
+
+export default PollCard;

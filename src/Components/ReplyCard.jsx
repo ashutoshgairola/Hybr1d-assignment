@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TimeAgo from "javascript-time-ago";
+import PropTypes from "prop-types";
 
 function ReplyCard({ text, author, created_at, children }) {
   const replies = children.length;
@@ -47,5 +48,13 @@ function ReplyCard({ text, author, created_at, children }) {
     </div>
   );
 }
+
+ReplyCard.propTypes = {
+  text: PropTypes.string,
+  author: PropTypes.string,
+  created_at: PropTypes.string,
+  children: PropTypes.array,
+};
+
 
 export default ReplyCard;

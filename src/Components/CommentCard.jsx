@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import TimeAgo from "javascript-time-ago";
+import PropTypes from "prop-types";
 
 function CommentCard({ author, created_at, comment_text, story_id }) {
   const timeAgo = new TimeAgo("en-US");
@@ -35,4 +36,12 @@ function CommentCard({ author, created_at, comment_text, story_id }) {
   );
 }
 
+CommentCard.propTypes = {
+  story_id: PropTypes.number,
+  comment_text: PropTypes.string,
+  created_at: PropTypes.string,
+  author: PropTypes.string,
+};
+
 export default CommentCard;
+

@@ -1,5 +1,5 @@
 import TimeAgo from "javascript-time-ago";
-// import en from "javascript-time-ago/locale/en";
+import PropTypes from "prop-types";
 
 function PostCard({ title, author, created_at, points, children, url }) {
   const comments = children.length;
@@ -45,5 +45,14 @@ function PostCard({ title, author, created_at, points, children, url }) {
     </div>
   );
 }
+
+PostCard.propTypes = {
+  points: PropTypes.number,
+  title: PropTypes.string,
+  author: PropTypes.string,
+  created_at: PropTypes.string,
+  url: PropTypes.string,
+  children: PropTypes.array,
+};
 
 export default PostCard;

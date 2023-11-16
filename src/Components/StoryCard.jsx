@@ -1,5 +1,6 @@
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import PropTypes from "prop-types";
 
 TimeAgo.addDefaultLocale(en);
 
@@ -32,5 +33,14 @@ function StoryCard({ title, author, created_at, points, num_comments }) {
     </div>
   );
 }
+
+StoryCard.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  created_at: PropTypes.string,
+  children: PropTypes.array,
+  points: PropTypes.number,
+  num_comments: PropTypes.number,
+};
 
 export default StoryCard;
